@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -112,7 +112,6 @@
             color: #fff;
         }
         
-        /* Unique Holographic Avatar Visual Core */
         .avatar-core {
             position: relative;
             width: 110px;
@@ -263,7 +262,7 @@
             }
 
             const fullPrompt = `${systemInstruction}\nUser message: ${promptText}`;
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`;
 
             try {
                 const response = await fetch(url, {
