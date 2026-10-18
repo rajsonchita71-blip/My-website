@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
         }
         .header {
             width: 100%;
-            max-width: 850px;
+            max-width: 750px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -31,16 +31,16 @@
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.05);
         }
         .title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: bold;
             letter-spacing: 2px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: #38bdf8;
         }
         .dot {
-            width: 9px; height: 9px;
+            width: 8px; height: 8px;
             background-color: #38bdf8;
             border-radius: 50%;
             box-shadow: 0 0 10px #38bdf8;
@@ -48,35 +48,34 @@
         }
         @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         
-        .controls { display: flex; gap: 8px; align-items: center; }
+        .controls { display: flex; gap: 6px; align-items: center; }
         select, button {
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid rgba(56, 189, 248, 0.4);
             color: #38bdf8;
-            padding: 5px 10px;
+            padding: 5px 8px;
             border-radius: 6px;
             outline: none;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             transition: all 0.2s;
         }
         select:hover, button:hover { background: rgba(56, 189, 248, 0.2); }
         select option { background-color: #030a17; color: #38bdf8; }
         
-        .menu-btn {
+        .icon-btn {
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid rgba(56, 189, 248, 0.4);
-            font-size: 1.1rem;
-            padding: 4px 10px;
+            font-size: 0.95rem;
+            padding: 4px 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
         }
 
         .api-box {
             width: 100%;
-            max-width: 850px;
+            max-width: 750px;
             margin: 8px 0;
             display: flex;
             gap: 8px;
@@ -92,79 +91,58 @@
             font-size: 0.85rem;
         }
 
-        .main-layout {
-            display: flex;
-            width: 100%;
-            max-width: 850px;
-            gap: 12px;
-            flex: 1;
-            margin-top: 8px;
-        }
-        @media (max-width: 700px) {
-            .main-layout { flex-direction: column; }
-        }
-
-        /* Compact Soft Blue Task Panel */
-        .task-panel {
-            flex: 0.8;
-            background: rgba(3, 10, 23, 0.6);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 10px;
-            padding: 10px;
-            max-height: 280px;
-            overflow-y: auto;
-            box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.03);
-        }
-        .task-panel h3 {
-            margin: 0 0 8px 0;
-            font-size: 0.9rem;
-            color: #38bdf8;
-            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-            padding-bottom: 4px;
-        }
-        .task-item {
-            font-size: 0.78rem;
-            padding: 6px 8px;
-            margin-bottom: 5px;
-            background: rgba(56, 189, 248, 0.04);
-            border-left: 2px solid #38bdf8;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .task-item.completed { text-decoration: line-through; opacity: 0.4; border-left-color: rgba(56, 189, 248, 0.3); }
-
-        /* Chat Container */
+        /* Clean Single-Column Chat Container */
         .chat-container {
-            flex: 2;
-            background: rgba(2, 6, 15, 0.7);
+            width: 100%;
+            max-width: 750px;
+            background: rgba(2, 6, 15, 0.75);
             border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 10px;
-            padding: 10px;
-            max-height: 280px;
+            padding: 12px;
+            height: 250px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            margin-top: 10px;
             box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.03);
         }
         .msg {
             padding: 8px 12px;
             border-radius: 8px;
-            max-width: 88%;
+            max-width: 85%;
             font-size: 0.85rem;
             line-height: 1.4;
         }
         .jarvis { background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.2); align-self: flex-start; color: #e0f2fe; }
         .user { background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); align-self: flex-end; color: #fff; }
 
-        /* Soft Blue Holographic Core */
+        /* Compact Soft Blue Holographic Core with Left Stop Button Layout */
+        .interactive-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+            position: relative;
+        }
+        .stop-btn {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #f87171;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .stop-btn:hover { background: rgba(239, 68, 68, 0.3); }
+
         .avatar-container {
             position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 10px auto;
+            width: 90px;
+            height: 90px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -176,7 +154,7 @@
             animation: spin 10s linear infinite;
         }
         .ring-inner {
-            position: absolute; width: 80%; height: 80%;
+            position: absolute; width: 78%; height: 78%;
             border-radius: 50%; border: 2px solid rgba(56, 189, 248, 0.25);
             animation: spin-reverse 8s linear infinite;
         }
@@ -184,18 +162,18 @@
         @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
         
         .core-orb {
-            width: 50px; height: 50px; border-radius: 50%;
+            width: 42px; height: 42px; border-radius: 50%;
             background: radial-gradient(circle, #38bdf8 0%, #030a17 80%);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
             display: flex; justify-content: center; align-items: center;
             z-index: 2; transition: all 0.3s ease;
         }
-        .listening .core-orb { background: radial-gradient(circle, #0284c7 0%, #030a17 80%); box-shadow: 0 0 30px #0284c7; }
-        .speaking .core-orb { background: radial-gradient(circle, #10b981 0%, #030a17 80%); box-shadow: 0 0 35px #10b981; }
+        .listening .core-orb { background: radial-gradient(circle, #0284c7 0%, #030a17 80%); box-shadow: 0 0 25px #0284c7; }
+        .speaking .core-orb { background: radial-gradient(circle, #10b981 0%, #030a17 80%); box-shadow: 0 0 30px #10b981; }
 
-        .status { font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; text-align: center; color: #38bdf8; font-weight: bold; }
+        .status { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; text-align: center; color: #38bdf8; font-weight: bold; margin-top: 6px; }
 
-        /* Modal for History */
+        /* Universal Popup Modal (For Tasks & History) */
         .modal {
             display: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -206,270 +184,4 @@
             background: #030a17;
             border: 1px solid rgba(56, 189, 248, 0.4);
             border-radius: 12px;
-            width: 90%; max-width: 500px;
-            max-height: 75vh;
-            padding: 15px;
-            display: flex; flex-direction: column;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
-        }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 6px; color: #38bdf8; }
-        .modal-body { flex: 1; overflow-y: auto; margin-top: 10px; font-size: 0.82rem; }
-        .history-item { margin-bottom: 10px; padding: 6px; background: rgba(56, 189, 248, 0.03); border-left: 2px solid #38bdf8; border-radius: 4px; }
-    </style>
-</head>
-<body>
-
-    <div class="header">
-        <div class="title"><div class="dot"></div> J.A.R.V.I.S.</div>
-        <div class="controls">
-            <select id="langSelect">
-                <option value="hi-IN" selected>हिंदी (Fluent)</option>
-                <option value="en-IN">English (Pro)</option>
-                <option value="hinglish">Hinglish</option>
-            </select>
-            <button class="menu-btn" onclick="openHistoryModal()" title="Menu Logs">☰</button>
-            <button onclick="toggleKeyBox()">⚙ Key</button>
-        </div>
-    </div>
-
-    <div class="api-box" id="apiBox">
-        <input type="password" id="apiKeyInput" placeholder="Paste Gemini API Key (AIzaSy...)">
-        <button onclick="saveKey()">Save</button>
-    </div>
-
-    <div class="main-layout">
-        <!-- Compact Tasks Panel -->
-        <div class="task-panel">
-            <h3>📋 Tasks</h3>
-            <div id="taskList"></div>
-        </div>
-
-        <!-- Chat Output -->
-        <div class="chat-container" id="chat">
-            <div class="msg jarvis">
-                <strong>JARVIS</strong><br>
-                नमस्ते सर! जार्विस सिस्टम ऑनलाइन है। आप कोई भी प्रश्न पूछ सकते हैं या रिमाइंडर सेट करवा सकते हैं।
-            </div>
-        </div>
-    </div>
-
-    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 8px;">
-        <div class="avatar-container" id="avatarWrapper" onclick="startListening()">
-            <div class="ring-outer"></div>
-            <div class="ring-inner"></div>
-            <div class="core-orb">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
-                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
-                    <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
-                    <line x1="12" y1="19" x2="12" y2="22"></line>
-                </svg>
-            </div>
-        </div>
-        <div class="status" id="status">System Standby</div>
-    </div>
-
-    <!-- Menu Modal for History -->
-    <div class="modal" id="historyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 style="margin:0;">☰ Conversation Logs</h3>
-                <button onclick="closeHistoryModal()">✖</button>
-            </div>
-            <div class="modal-body" id="historyLog"></div>
-        </div>
-    </div>
-
-    <script>
-        let apiKey = localStorage.getItem('gemini_api_key') || '';
-        if(apiKey) { document.getElementById('apiBox').style.display = 'none'; }
-
-        let tasks = JSON.parse(localStorage.getItem('jarvis_tasks_v3')) || [];
-        let chatLogs = JSON.parse(localStorage.getItem('jarvis_logs_v3')) || [];
-
-        function saveKey() {
-            const key = document.getElementById('apiKeyInput').value.trim();
-            if(key) {
-                localStorage.setItem('gemini_api_key', key);
-                apiKey = key;
-                document.getElementById('apiBox').style.display = 'none';
-            }
-        }
-
-        function toggleKeyBox() {
-            const box = document.getElementById('apiBox');
-            box.style.display = box.style.display === 'none' ? 'flex' : 'none';
-        }
-
-        function renderTasks() {
-            const list = document.getElementById('taskList');
-            list.innerHTML = tasks.length === 0 ? '<div style="font-size:0.75rem; opacity:0.4;">No tasks.</div>' : '';
-            tasks.forEach((t, i) => {
-                const item = document.createElement('div');
-                item.className = `task-item ${t.completed ? 'completed' : ''}`;
-                item.innerHTML = `
-                    <span>⏰ ${t.text} (${t.time})</span>
-                    <input type="checkbox" ${t.completed ? 'checked' : ''} onchange="toggleTask(${i})">
-                `;
-                list.appendChild(item);
-            });
-        }
-
-        function toggleTask(i) {
-            tasks[i].completed = !tasks[i].completed;
-            localStorage.setItem('jarvis_tasks_v3', JSON.stringify(tasks));
-            renderTasks();
-        }
-
-        function addReminder(text, delayMinutes) {
-            const timeStr = new Date(Date.now() + delayMinutes * 60000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            tasks.push({ text, time: timeStr, completed: false });
-            localStorage.setItem('jarvis_tasks_v3', JSON.stringify(tasks));
-            renderTasks();
-
-            setTimeout(() => {
-                speak(`सर, आपके रिमाइंडर का समय हो गया है: ${text}`);
-                const taskObj = tasks.find(t => t.text === text);
-                if(taskObj) taskObj.completed = true;
-                localStorage.setItem('jarvis_tasks_v3', JSON.stringify(tasks));
-                renderTasks();
-            }, delayMinutes * 60000);
-        }
-
-        function logConversation(userText, jarvisReply) {
-            const dateStr = new Date().toLocaleString();
-            chatLogs.push({ date: dateStr, user: userText, jarvis: jarvisReply });
-            localStorage.setItem('jarvis_logs_v3', JSON.stringify(chatLogs));
-        }
-
-        function openHistoryModal() {
-            const logDiv = document.getElementById('historyLog');
-            logDiv.innerHTML = chatLogs.length === 0 ? 'No logs available.' : '';
-            chatLogs.slice().reverse().forEach(log => {
-                logDiv.innerHTML += `
-                    <div class="history-item">
-                        <small style="opacity:0.4;">${log.date}</small><br>
-                        <strong>You:</strong> ${log.user}<br>
-                        <strong style="color:#38bdf8;">JARVIS:</strong> ${log.jarvis}
-                    </div>
-                `;
-            });
-            document.getElementById('historyModal').style.display = 'flex';
-        }
-
-        function closeHistoryModal() {
-            document.getElementById('historyModal').style.display = 'none';
-        }
-
-        async function askGemini(promptText) {
-            if(!apiKey) return "Please enter your Gemini API key.";
-
-            const lower = promptText.toLowerCase();
-            if(lower.includes("reminder") || lower.includes("रिमाइंडर") || lower.includes("yaad dila")) {
-                const matchMinutes = promptText.match(/\d+/);
-                const minutes = matchMinutes ? parseInt(matchMinutes[0]) : 1;
-                addReminder(promptText, minutes);
-                return `बिल्कुल सर, मैंने ${minutes} मिनट बाद के लिए रिमाइंडर सेट कर दिया है।`;
-            }
-
-            const selectedLang = document.getElementById('langSelect').value;
-            let systemInstruction = "You are JARVIS, an elite multi-sector AI assistant. Provide expert, precise, crisp answers across all subjects.";
-            
-            if (selectedLang === 'hi-IN') systemInstruction += " Reply strictly in fluent, formal Hindi.";
-            else if (selectedLang === 'hinglish') systemInstruction += " Reply in crisp professional Hinglish.";
-            else systemInstruction += " Reply in elite professional English.";
-
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ contents: [{ parts: [{ text: `${systemInstruction}\nUser Query: ${promptText}` }] }] })
-                });
-                const data = await response.json();
-                const reply = data.candidates[0].content.parts[0].text;
-                logConversation(promptText, reply);
-                return reply;
-            } catch (err) {
-                return "क्षमा करें सर, सर्वर से संपर्क स्थापित करने में असफलता।";
-            }
-        }
-
-        function addMessage(sender, text) {
-            const chat = document.getElementById('chat');
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `msg ${sender}`;
-            msgDiv.innerHTML = `<strong>${sender === 'jarvis' ? 'JARVIS' : 'YOU'}</strong><br>${text}`;
-            chat.appendChild(msgDiv);
-            chat.scrollTop = chat.scrollHeight;
-        }
-
-        function speak(text) {
-            const wrapper = document.getElementById('avatarWrapper');
-            const utterance = new SpeechSynthesisUtterance(text);
-            const selectedLang = document.getElementById('langSelect').value;
-            
-            utterance.lang = selectedLang === 'hi-IN' ? 'hi-IN' : 'en-IN';
-            utterance.pitch = 0.85;
-            
-            utterance.onstart = () => {
-                wrapper.classList.remove('listening');
-                wrapper.classList.add('speaking');
-                document.getElementById('status').innerText = "JARVIS Speaking...";
-            };
-
-            utterance.onend = () => {
-                wrapper.classList.remove('speaking');
-                document.getElementById('status').innerText = "System Standby";
-                setTimeout(startListening, 800);
-            };
-
-            window.speechSynthesis.speak(utterance);
-        }
-
-        function startListening() {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognition) return;
-
-            const recognition = new SpeechRecognition();
-            const status = document.getElementById('status');
-            const wrapper = document.getElementById('avatarWrapper');
-            const selectedLang = document.getElementById('langSelect').value;
-            
-            recognition.lang = selectedLang === 'hi-IN' ? 'hi-IN' : 'en-IN';
-
-            recognition.onstart = () => {
-                wrapper.classList.add('listening');
-                status.innerText = "Listening...";
-            };
-
-            recognition.onspeechend = () => {
-                wrapper.classList.remove('listening');
-                status.innerText = "Processing...";
-                recognition.stop();
-            };
-
-            recognition.onresult = async (event) => {
-                const transcript = event.results[0][0].transcript;
-                addMessage('user', transcript);
-                
-                const reply = await askGemini(transcript);
-                addMessage('jarvis', reply);
-                speak(reply);
-            };
-
-            recognition.onerror = () => {
-                wrapper.classList.remove('listening');
-                status.innerText = "System Standby";
-            };
-
-            recognition.start();
-        }
-
-        window.onload = () => {
-            renderTasks();
-            if(apiKey) setTimeout(startListening, 1500);
-        };
-    </script>
-</body>
-</html>
+            width: 90%; max-width: 
