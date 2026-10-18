@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J.A.R.V.I.S. AI Voice Assistant</title>
+    <title>A.I. Companion & J.A.R.V.I.S.</title>
     <style>
         body {
-            background-color: #050b14;
+            background: radial-gradient(circle at center, #0a1128 0%, #030712 100%);
             color: #00f0ff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
@@ -17,6 +17,7 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
+            overflow-x: hidden;
         }
         .header {
             width: 100%;
@@ -24,9 +25,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(0, 240, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
         }
         .title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: 2px;
             display: flex;
@@ -34,38 +39,47 @@
             gap: 10px;
         }
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             background-color: #00f0ff;
             border-radius: 50%;
-            box-shadow: 0 0 10px #00f0ff;
+            box-shadow: 0 0 12px #00f0ff;
+            animation: blink 2s infinite;
         }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        
         .controls {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
         select, button {
             background: rgba(0, 240, 255, 0.1);
             border: 1px solid #00f0ff;
             color: #00f0ff;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
             outline: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        select option {
+            background-color: #050b14;
+            color: #00f0ff;
         }
         .api-box {
             width: 100%;
             max-width: 600px;
-            margin: 15px 0;
+            margin: 10px 0;
             display: flex;
             gap: 10px;
         }
-        input[type="password"], input[type="text"] {
+        input[type="password"] {
             flex: 1;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(0, 240, 255, 0.4);
             color: #fff;
             padding: 10px;
-            border-radius: 6px;
+            border-radius: 8px;
             outline: none;
         }
         .chat-container {
@@ -75,58 +89,90 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin: 15px 0;
+            padding-right: 5px;
         }
         .msg {
             padding: 12px 16px;
-            border-radius: 8px;
-            max-width: 80%;
-            line-height: 1.4;
+            border-radius: 10px;
+            max-width: 85%;
+            line-height: 1.5;
+            font-size: 0.95rem;
         }
         .jarvis {
             background: rgba(0, 240, 255, 0.08);
             border: 1px solid rgba(0, 240, 255, 0.3);
             align-self: flex-start;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
         }
         .user {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             align-self: flex-end;
             color: #fff;
         }
-        .arc-container {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .arc-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid #00f0ff;
-            background: radial-gradient(circle, rgba(0,240,255,0.4) 0%, rgba(5,11,20,1) 70%);
-            box-shadow: 0 0 20px #00f0ff;
-            cursor: pointer;
+        
+        /* Unique Holographic Avatar Visual Core */
+        .avatar-core {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 10px auto;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+        .core-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px dashed rgba(0, 240, 255, 0.4);
+            animation: rotateRing 12s linear infinite;
+        }
+        @keyframes rotateRing { 100% { transform: rotate(360deg); } }
+        
+        .arc-btn {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: 2px solid #00f0ff;
+            background: radial-gradient(circle, rgba(0,240,255,0.6) 0%, rgba(3,7,18,1) 75%);
+            box-shadow: 0 0 25px #00f0ff;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            transition: transform 0.2s;
+        }
+        .arc-btn:active { transform: scale(0.95); }
+        
+        .listening .core-ring { border-color: #ff0055; animation: rotateRing 4s linear infinite; }
+        .listening .arc-btn { box-shadow: 0 0 30px #ff0055; border-color: #ff0055; }
+        
+        .speaking .arc-btn {
+            box-shadow: 0 0 45px #00f0ff, 0 0 90px rgba(0,240,255,0.6);
+            transform: scale(1.08);
+        }
+        
         .status {
-            margin-top: 10px;
-            font-size: 0.85rem;
+            margin-top: 5px;
+            font-size: 0.8rem;
             opacity: 0.8;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
         .error-banner {
             color: #ff4a4a;
             background: rgba(255, 0, 0, 0.1);
             border: 1px solid #ff4a4a;
-            padding: 10px;
+            padding: 8px;
             border-radius: 6px;
             width: 100%;
             max-width: 600px;
             text-align: center;
-            margin-bottom: 10px;
+            font-size: 0.85rem;
             display: none;
         }
     </style>
@@ -134,8 +180,13 @@
 <body>
 
     <div class="header">
-        <div class="title"><div class="dot"></div> J.A.R.V.I.S.</div>
+        <div class="title"><div class="dot"></div> A.I. COMPANION</div>
         <div class="controls">
+            <select id="langSelect">
+                <option value="en-IN">English</option>
+                <option value="hi-IN" selected>Hindi (हिंदी)</option>
+                <option value="hinglish">Hinglish</option>
+            </select>
             <button onclick="toggleKeyBox()">⚙ Key</button>
         </div>
     </div>
@@ -149,28 +200,29 @@
 
     <div class="chat-container" id="chat">
         <div class="msg jarvis">
-            <strong>J.A.R.V.I.S.</strong><br>
-            Online and ready, Sir. Tap the glowing Arc button to talk or type below.
+            <strong>Companion</strong><br>
+            Hello! Main aapka smart AI peer hoon. Mic button par tap karke kuch bhi baat kariye.
         </div>
     </div>
 
-    <div class="arc-container">
-        <button class="arc-btn" onclick="startListening()">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2">
-                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                <line x1="12" y1="19" x2="12" y2="23"></line>
-                <line x1="8" y1="23" x2="16" y2="23"></line>
-            </svg>
-        </button>
-        <div class="status" id="status">System Standby</div>
+    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
+        <div class="avatar-core" id="avatarWrapper">
+            <div class="core-ring"></div>
+            <button class="arc-btn" onclick="startListening()">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="status" id="status">Tap to speak</div>
     </div>
 
     <script>
         let apiKey = localStorage.getItem('gemini_api_key') || '';
-        if(apiKey) {
-            document.getElementById('apiBox').style.display = 'none';
-        }
+        if(apiKey) { document.getElementById('apiBox').style.display = 'none'; }
 
         function saveKey() {
             const key = document.getElementById('apiKeyInput').value.trim();
@@ -189,12 +241,8 @@
 
         function showError(msg) {
             const banner = document.getElementById('errorBanner');
-            if(msg) {
-                banner.innerText = msg;
-                banner.style.display = 'block';
-            } else {
-                banner.style.display = 'none';
-            }
+            if(msg) { banner.innerText = msg; banner.style.display = 'block'; }
+            else { banner.style.display = 'none'; }
         }
 
         async function askGemini(promptText) {
@@ -203,29 +251,36 @@
                 return;
             }
 
-            // Updated to the latest recommended model
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            const selectedLang = document.getElementById('langSelect').value;
+            let systemInstruction = "You are a warm, friendly, and smart AI peer. Talk naturally like a supportive human friend, keeping answers concise and crisp.";
+            
+            if (selectedLang === 'hi-IN') {
+                systemInstruction += " Reply strictly in natural Hindi (Devanagari script).";
+            } else if (selectedLang === 'hinglish') {
+                systemInstruction += " Reply strictly in casual Indian Hinglish.";
+            } else {
+                systemInstruction += " Reply in clear Indian English.";
+            }
+
+            const fullPrompt = `${systemInstruction}\nUser message: ${promptText}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
             try {
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: promptText }] }]
-                    })
+                    body: JSON.stringify({ contents: [{ parts: [{ text: fullPrompt }] }] })
                 });
 
                 const data = await response.json();
-                
                 if (data.error) {
                     showError(data.error.message);
-                    return "Sorry Sir, I encountered an error: " + data.error.message;
+                    return "Error: " + data.error.message;
                 }
-
                 return data.candidates[0].content.parts[0].text;
             } catch (err) {
-                showError("Network or Connection Error.");
-                return "Sorry Sir, I couldn't connect to the server.";
+                showError("Network connection error.");
+                return "Server connection failed.";
             }
         }
 
@@ -233,32 +288,53 @@
             const chat = document.getElementById('chat');
             const msgDiv = document.createElement('div');
             msgDiv.className = `msg ${sender}`;
-            msgDiv.innerHTML = `<strong>${sender === 'jarvis' ? 'J.A.R.V.I.S.' : 'YOU'}</strong><br>${text}`;
+            msgDiv.innerHTML = `<strong>${sender === 'jarvis' ? 'Companion' : 'YOU'}</strong><br>${text}`;
             chat.appendChild(msgDiv);
             chat.scrollTop = chat.scrollHeight;
         }
 
         function speak(text) {
+            const wrapper = document.getElementById('avatarWrapper');
             const utterance = new SpeechSynthesisUtterance(text);
+            const selectedLang = document.getElementById('langSelect').value;
+            
+            utterance.lang = selectedLang === 'hi-IN' ? 'hi-IN' : 'en-IN';
+            
+            utterance.onstart = () => {
+                wrapper.classList.add('speaking');
+                document.getElementById('status').innerText = "Speaking...";
+            };
+
+            utterance.onend = () => {
+                wrapper.classList.remove('speaking');
+                document.getElementById('status').innerText = "Tap to speak";
+            };
+
             window.speechSynthesis.speak(utterance);
         }
 
         function startListening() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SpeechRecognition) {
-                alert("Speech recognition not supported on this browser.");
+                alert("Speech recognition not supported.");
                 return;
             }
 
             const recognition = new SpeechRecognition();
             const status = document.getElementById('status');
+            const wrapper = document.getElementById('avatarWrapper');
+            const selectedLang = document.getElementById('langSelect').value;
+            
+            recognition.lang = selectedLang === 'hi-IN' ? 'hi-IN' : 'en-IN';
 
             recognition.onstart = () => {
+                wrapper.classList.add('listening');
                 status.innerText = "Listening...";
             };
 
             recognition.onspeechend = () => {
-                status.innerText = "Processing...";
+                wrapper.classList.remove('listening');
+                status.innerText = "Thinking...";
                 recognition.stop();
             };
 
@@ -269,12 +345,11 @@
                 const reply = await askGemini(transcript);
                 addMessage('jarvis', reply);
                 speak(reply);
-                
-                status.innerText = "System Standby";
             };
 
             recognition.onerror = () => {
-                status.innerText = "System Standby";
+                wrapper.classList.remove('listening');
+                status.innerText = "Tap to speak";
             };
 
             recognition.start();
