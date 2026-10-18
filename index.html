@@ -1,58 +1,54 @@
-   <!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHERA BHAI - AI Voice Assistant</title>
+    <title>J.A.R.V.I.S. - Professional AI Core</title>
     <style>
+        * { box-sizing: border-box; }
         body {
-            background: radial-gradient(circle at center, #111827 0%, #030712 100%);
+            background: radial-gradient(circle at center, #0a050f 0%, #020104 100%);
             color: #38bdf8;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
+            padding: 12px;
             overflow-x: hidden;
         }
         .header {
             width: 100%;
-            max-width: 600px;
+            max-width: 850px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(56, 189, 248, 0.05);
+            background: rgba(225, 29, 72, 0.05);
             padding: 12px 18px;
-            border-radius: 14px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            border: 1px solid rgba(225, 29, 72, 0.3);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.05);
         }
         .title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: bold;
             letter-spacing: 2px;
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #38bdf8;
+            color: #f43f5e;
         }
         .dot {
-            width: 10px;
-            height: 10px;
-            background-color: #38bdf8;
+            width: 10px; height: 10px;
+            background-color: #f43f5e;
             border-radius: 50%;
-            box-shadow: 0 0 12px #38bdf8;
+            box-shadow: 0 0 12px #f43f5e;
             animation: pulse-dot 1.5s infinite;
         }
-        @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.9); } }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         
-        .controls {
-            display: flex;
-            gap: 8px;
-        }
+        .controls { display: flex; gap: 10px; align-items: center; }
         select, button {
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid #38bdf8;
@@ -62,169 +58,227 @@
             outline: none;
             cursor: pointer;
             font-size: 0.85rem;
+            transition: all 0.2s;
         }
-        select option {
-            background-color: #030712;
-            color: #38bdf8;
+        select:hover, button:hover { background: rgba(56, 189, 248, 0.2); }
+        select option { background-color: #0a050f; color: #38bdf8; }
+        .smile-btn {
+            background: rgba(225, 29, 72, 0.1);
+            border: 1px solid #f43f5e;
+            font-size: 1.2rem;
+            padding: 4px 8px;
         }
+
         .api-box {
             width: 100%;
-            max-width: 600px;
+            max-width: 850px;
             margin: 10px 0;
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
         input[type="password"] {
             flex: 1;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(56, 189, 248, 0.4);
             color: #fff;
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 6px;
             outline: none;
         }
-        .chat-container {
+
+        .main-layout {
+            display: flex;
             width: 100%;
-            max-width: 600px;
+            max-width: 850px;
+            gap: 15px;
             flex: 1;
+            margin-top: 10px;
+        }
+        @media (max-width: 700px) {
+            .main-layout { flex-direction: column; }
+        }
+
+        /* Professional Red-Blue Task Panel */
+        .task-panel {
+            flex: 1;
+            background: rgba(10, 5, 15, 0.6);
+            border: 1px solid rgba(225, 29, 72, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            max-height: 360px;
+            overflow-y: auto;
+            box-shadow: inset 0 0 15px rgba(225, 29, 72, 0.05);
+        }
+        .task-panel h3 {
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+            color: #f43f5e;
+            border-bottom: 1px solid rgba(225, 29, 72, 0.3);
+            padding-bottom: 6px;
+        }
+        .task-item {
+            font-size: 0.8rem;
+            padding: 8px;
+            margin-bottom: 6px;
+            background: rgba(56, 189, 248, 0.05);
+            border-left: 3px solid #38bdf8;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task-item.completed { text-decoration: line-through; opacity: 0.4; border-left-color: #f43f5e; }
+
+        /* Chat Container */
+        .chat-container {
+            flex: 2;
+            background: rgba(5, 2, 8, 0.7);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            padding: 12px;
+            max-height: 360px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin: 15px 0;
-            padding-right: 5px;
+            box-shadow: inset 0 0 20px rgba(56, 189, 248, 0.03);
         }
         .msg {
-            padding: 12px 16px;
-            border-radius: 12px;
-            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            max-width: 88%;
+            font-size: 0.88rem;
             line-height: 1.5;
-            font-size: 0.95rem;
         }
-        .shera {
-            background: rgba(56, 189, 248, 0.08);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            align-self: flex-start;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.05);
-            color: #e0f2fe;
-        }
-        .user {
-            background: rgba(255, 255, 255, 0.1);
-            align-self: flex-end;
-            color: #fff;
-        }
-        
-        .avatar-core {
+        .jarvis { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); align-self: flex-start; color: #e0f2fe; }
+        .user { background: rgba(225, 29, 72, 0.15); border: 1px solid rgba(225, 29, 72, 0.4); align-self: flex-end; color: #fff; }
+
+        /* Holographic Red-Blue Core */
+        .avatar-container {
             position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 10px auto;
+            width: 120px;
+            height: 120px;
+            margin: 12px auto;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        .core-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px dashed rgba(56, 189, 248, 0.4);
-            animation: rotateRing 10s linear infinite;
-        }
-        @keyframes rotateRing { 100% { transform: rotate(360deg); } }
-        
-        .arc-btn {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            border: 2px solid #38bdf8;
-            background: radial-gradient(circle, rgba(56,189,248,0.6) 0%, rgba(3,7,18,1) 75%);
-            box-shadow: 0 0 25px #38bdf8;
             cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-            transition: transform 0.2s;
         }
-        .arc-btn:active { transform: scale(0.95); }
-        
-        .listening .core-ring { border-color: #f43f5e; animation: rotateRing 3s linear infinite; }
-        .listening .arc-btn { box-shadow: 0 0 30px #f43f5e; border-color: #f43f5e; }
-        
-        .speaking .arc-btn {
-            box-shadow: 0 0 45px #38bdf8, 0 0 90px rgba(56,189,248,0.6);
-            transform: scale(1.08);
+        .ring-outer {
+            position: absolute; width: 100%; height: 100%;
+            border-radius: 50%; border: 2px dashed rgba(56, 189, 248, 0.5);
+            animation: spin 10s linear infinite;
         }
-        
-        .status {
-            margin-top: 5px;
-            font-size: 0.8rem;
-            opacity: 0.8;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #38bdf8;
+        .ring-inner {
+            position: absolute; width: 80%; height: 80%;
+            border-radius: 50%; border: 2px solid rgba(225, 29, 72, 0.4);
+            animation: spin-reverse 8s linear infinite;
         }
-        .error-banner {
-            color: #ff4a4a;
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid #ff4a4a;
-            padding: 8px;
-            border-radius: 6px;
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            font-size: 0.85rem;
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+        
+        .core-orb {
+            width: 55px; height: 55px; border-radius: 50%;
+            background: radial-gradient(circle, #38bdf8 0%, #f43f5e 60%, #0a050f 90%);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 10px #f43f5e;
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2; transition: all 0.3s ease;
+        }
+        .listening .core-orb { background: radial-gradient(circle, #f43f5e 0%, #0a050f 80%); box-shadow: 0 0 35px #f43f5e; }
+        .speaking .core-orb { background: radial-gradient(circle, #10b981 0%, #0a050f 80%); box-shadow: 0 0 40px #10b981; }
+
+        .status { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #f43f5e; font-weight: bold; }
+
+        /* Modal for History */
+        .modal {
             display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center; align-items: center; z-index: 1000;
         }
+        .modal-content {
+            background: #0a050f;
+            border: 1px solid #f43f5e;
+            border-radius: 12px;
+            width: 90%; max-width: 550px;
+            max-height: 80vh;
+            padding: 15px;
+            display: flex; flex-direction: column;
+            box-shadow: 0 0 35px rgba(225, 29, 72, 0.3);
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(225, 29, 72, 0.3); padding-bottom: 8px; color: #f43f5e; }
+        .modal-body { flex: 1; overflow-y: auto; margin-top: 10px; font-size: 0.85rem; }
+        .history-item { margin-bottom: 12px; padding: 8px; background: rgba(56, 189, 248, 0.03); border-left: 2px solid #38bdf8; border-radius: 4px; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <div class="title"><div class="dot"></div> SHERA BHAI</div>
+        <div class="title"><div class="dot"></div> J.A.R.V.I.S.</div>
         <div class="controls">
             <select id="langSelect">
-                <option value="en-IN">English</option>
-                <option value="hi-IN" selected>Hindi (हिंदी)</option>
+                <option value="hi-IN" selected>हिंदी (Fluent)</option>
+                <option value="en-IN">English (Pro)</option>
                 <option value="hinglish">Hinglish</option>
             </select>
+            <button class="smile-btn" onclick="openHistoryModal()" title="Daily Chat Logs">😊</button>
             <button onclick="toggleKeyBox()">⚙ Key</button>
         </div>
     </div>
-
-    <div id="errorBanner" class="error-banner"></div>
 
     <div class="api-box" id="apiBox">
         <input type="password" id="apiKeyInput" placeholder="Paste Gemini API Key (AIzaSy...)">
         <button onclick="saveKey()">Save</button>
     </div>
 
-    <div class="chat-container" id="chat">
-        <div class="msg shera">
-            <strong>Shera Bhai</strong><br>
-            Ram Ram bhai! Main tera Shera Bhai hoon. Bol kya madad karu teri? Mic button dabakar baat kar sakte ho.
+    <div class="main-layout">
+        <!-- Tasks & Reminders Panel -->
+        <div class="task-panel">
+            <h3>📋 Tasks & Reminders</h3>
+            <div id="taskList"></div>
+        </div>
+
+        <!-- Chat Output -->
+        <div class="chat-container" id="chat">
+            <div class="msg jarvis">
+                <strong>JARVIS</strong><br>
+                नमस्ते सर! जार्विस सिस्टम ऑनलाइन है। आप किसी भी सेक्टर से जुड़ा कोई भी कठिन से कठिन सवाल पूछ सकते हैं या रिमाइंडर सेट करवा सकते हैं।
+            </div>
         </div>
     </div>
 
-    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
-        <div class="avatar-core" id="avatarWrapper">
-            <div class="core-ring"></div>
-            <button class="arc-btn" onclick="startListening()">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
-                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                    <line x1="12" y1="19" x2="12" y2="23"></line>
-                    <line x1="8" y1="23" x2="16" y2="23"></line>
+    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 10px;">
+        <div class="avatar-container" id="avatarWrapper" onclick="startListening()">
+            <div class="ring-outer"></div>
+            <div class="ring-inner"></div>
+            <div class="core-orb">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
+                    <line x1="12" y1="19" x2="12" y2="22"></line>
                 </svg>
-            </button>
+            </div>
         </div>
-        <div class="status" id="status">Tap to speak</div>
+        <div class="status" id="status">System Standby</div>
+    </div>
+
+    <!-- Smile Pop Modal for History -->
+    <div class="modal" id="historyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="margin:0;">😊 Daily Conversation History</h3>
+                <button onclick="closeHistoryModal()">✖</button>
+            </div>
+            <div class="modal-body" id="historyLog"></div>
+        </div>
     </div>
 
     <script>
         let apiKey = localStorage.getItem('gemini_api_key') || '';
         if(apiKey) { document.getElementById('apiBox').style.display = 'none'; }
+
+        let tasks = JSON.parse(localStorage.getItem('jarvis_tasks_v2')) || [];
+        let chatLogs = JSON.parse(localStorage.getItem('jarvis_logs_v2')) || [];
 
         function saveKey() {
             const key = document.getElementById('apiKeyInput').value.trim();
@@ -232,7 +286,6 @@
                 localStorage.setItem('gemini_api_key', key);
                 apiKey = key;
                 document.getElementById('apiBox').style.display = 'none';
-                showError("");
             }
         }
 
@@ -241,48 +294,99 @@
             box.style.display = box.style.display === 'none' ? 'flex' : 'none';
         }
 
-        function showError(msg) {
-            const banner = document.getElementById('errorBanner');
-            if(msg) { banner.innerText = msg; banner.style.display = 'block'; }
-            else { banner.style.display = 'none'; }
+        function renderTasks() {
+            const list = document.getElementById('taskList');
+            list.innerHTML = tasks.length === 0 ? '<div style="font-size:0.75rem; opacity:0.5;">No active tasks.</div>' : '';
+            tasks.forEach((t, i) => {
+                const item = document.createElement('div');
+                item.className = `task-item ${t.completed ? 'completed' : ''}`;
+                item.innerHTML = `
+                    <span>⏰ ${t.text} (${t.time})</span>
+                    <input type="checkbox" ${t.completed ? 'checked' : ''} onchange="toggleTask(${i})">
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function toggleTask(i) {
+            tasks[i].completed = !tasks[i].completed;
+            localStorage.setItem('jarvis_tasks_v2', JSON.stringify(tasks));
+            renderTasks();
+        }
+
+        function addReminder(text, delayMinutes) {
+            const timeStr = new Date(Date.now() + delayMinutes * 60000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            tasks.push({ text, time: timeStr, completed: false });
+            localStorage.setItem('jarvis_tasks_v2', JSON.stringify(tasks));
+            renderTasks();
+
+            setTimeout(() => {
+                speak(`सर, आपके रिमाइंडर का समय हो गया है: ${text}`);
+                const taskObj = tasks.find(t => t.text === text);
+                if(taskObj) taskObj.completed = true;
+                localStorage.setItem('jarvis_tasks_v2', JSON.stringify(tasks));
+                renderTasks();
+            }, delayMinutes * 60000);
+        }
+
+        function logConversation(userText, jarvisReply) {
+            const dateStr = new Date().toLocaleString();
+            chatLogs.push({ date: dateStr, user: userText, jarvis: jarvisReply });
+            localStorage.setItem('jarvis_logs_v2', JSON.stringify(chatLogs));
+        }
+
+        function openHistoryModal() {
+            const logDiv = document.getElementById('historyLog');
+            logDiv.innerHTML = chatLogs.length === 0 ? 'No chat history available.' : '';
+            chatLogs.slice().reverse().forEach(log => {
+                logDiv.innerHTML += `
+                    <div class="history-item">
+                        <small style="opacity:0.4;">${log.date}</small><br>
+                        <strong>You:</strong> ${log.user}<br>
+                        <strong style="color:#38bdf8;">JARVIS:</strong> ${log.jarvis}
+                    </div>
+                `;
+            });
+            document.getElementById('historyModal').style.display = 'flex';
+        }
+
+        function closeHistoryModal() {
+            document.getElementById('historyModal').style.display = 'none';
         }
 
         async function askGemini(promptText) {
-            if(!apiKey) {
-                showError("Please enter your Gemini API key using the ⚙ Key button.");
-                return;
+            if(!apiKey) return "Please enter your Gemini API key.";
+
+            const lower = promptText.toLowerCase();
+            if(lower.includes("reminder") || lower.includes("रिमाइंडर") || lower.includes("yaad dila")) {
+                const matchMinutes = promptText.match(/\d+/);
+                const minutes = matchMinutes ? parseInt(matchMinutes[0]) : 1;
+                addReminder(promptText, minutes);
+                return `बिल्कुल सर, मैंने ${minutes} मिनट बाद के लिए रिमाइंडर सेट कर दिया है।`;
             }
 
             const selectedLang = document.getElementById('langSelect').value;
-            let systemInstruction = "You are Shera Bhai, a cool, friendly, supportive, and street-smart Indian brotherly figure. Talk naturally like a helpful local buddy, keep responses direct, energetic, and engaging.";
+            // High intelligence core instructions across multi-sectors
+            let systemInstruction = "You are JARVIS, an elite, highly intelligent, ultra-fast multi-sector AI assistant (comparable to ChatGPT Pro). Provide expert, precise, crisp, and deep answers across science, coding, tech, finance, history, and general queries.";
             
-            if (selectedLang === 'hi-IN') {
-                systemInstruction += " Reply strictly in natural, friendly Hindi (Devanagari script).";
-            } else if (selectedLang === 'hinglish') {
-                systemInstruction += " Reply strictly in casual, friendly Indian Hinglish.";
-            } else {
-                systemInstruction += " Reply in warm Indian English.";
-            }
+            if (selectedLang === 'hi-IN') systemInstruction += " Reply strictly in fluent, formal and professional Hindi.";
+            else if (selectedLang === 'hinglish') systemInstruction += " Reply in crisp professional Hinglish.";
+            else systemInstruction += " Reply in elite professional English.";
 
-            const fullPrompt = `${systemInstruction}\nUser message: ${promptText}`;
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
             try {
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ contents: [{ parts: [{ text: fullPrompt }] }] })
+                    body: JSON.stringify({ contents: [{ parts: [{ text: `${systemInstruction}\nUser Query: ${promptText}` }] }] })
                 });
-
                 const data = await response.json();
-                if (data.error) {
-                    showError(data.error.message);
-                    return "Bhai error aa gaya: " + data.error.message;
-                }
-                return data.candidates[0].content.parts[0].text;
+                const reply = data.candidates[0].content.parts[0].text;
+                logConversation(promptText, reply);
+                return reply;
             } catch (err) {
-                showError("Network connection error.");
-                return "Net connection check kar le bhai, connect nahi ho pa raha.";
+                return "क्षमा करें सर, सर्वर से संपर्क स्थापित करने में असफलता।";
             }
         }
 
@@ -290,7 +394,7 @@
             const chat = document.getElementById('chat');
             const msgDiv = document.createElement('div');
             msgDiv.className = `msg ${sender}`;
-            msgDiv.innerHTML = `<strong>${sender === 'shera' ? 'Shera Bhai' : 'YOU'}</strong><br>${text}`;
+            msgDiv.innerHTML = `<strong>${sender === 'jarvis' ? 'JARVIS' : 'YOU'}</strong><br>${text}`;
             chat.appendChild(msgDiv);
             chat.scrollTop = chat.scrollHeight;
         }
@@ -301,17 +405,18 @@
             const selectedLang = document.getElementById('langSelect').value;
             
             utterance.lang = selectedLang === 'hi-IN' ? 'hi-IN' : 'en-IN';
-            utterance.pitch = 0.9; // Thodi heavy aur solid aawaz ke liye
-            utterance.rate = 1.0;  // Normal clear speed
+            utterance.pitch = 0.85; // Deep professional tone
             
             utterance.onstart = () => {
+                wrapper.classList.remove('listening');
                 wrapper.classList.add('speaking');
-                document.getElementById('status').innerText = "Shera bol raha hai...";
+                document.getElementById('status').innerText = "JARVIS Speaking...";
             };
 
             utterance.onend = () => {
                 wrapper.classList.remove('speaking');
-                document.getElementById('status').innerText = "Tap to speak";
+                document.getElementById('status').innerText = "System Standby";
+                setTimeout(startListening, 800);
             };
 
             window.speechSynthesis.speak(utterance);
@@ -319,10 +424,7 @@
 
         function startListening() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognition) {
-                alert("Speech recognition not supported.");
-                return;
-            }
+            if (!SpeechRecognition) return;
 
             const recognition = new SpeechRecognition();
             const status = document.getElementById('status');
@@ -333,12 +435,12 @@
 
             recognition.onstart = () => {
                 wrapper.classList.add('listening');
-                status.innerText = "Sun raha hu...";
+                status.innerText = "Listening...";
             };
 
             recognition.onspeechend = () => {
                 wrapper.classList.remove('listening');
-                status.innerText = "Soch raha hu...";
+                status.innerText = "Processing...";
                 recognition.stop();
             };
 
@@ -347,17 +449,22 @@
                 addMessage('user', transcript);
                 
                 const reply = await askGemini(transcript);
-                addMessage('shera', reply);
+                addMessage('jarvis', reply);
                 speak(reply);
             };
 
             recognition.onerror = () => {
                 wrapper.classList.remove('listening');
-                status.innerText = "Tap to speak";
+                status.innerText = "System Standby";
             };
 
             recognition.start();
         }
+
+        window.onload = () => {
+            renderTasks();
+            if(apiKey) setTimeout(startListening, 1500);
+        };
     </script>
 </body>
 </html>
