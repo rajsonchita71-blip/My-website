@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
@@ -91,7 +91,6 @@
             font-size: 0.85rem;
         }
 
-        /* Clean Single-Column Chat Container */
         .chat-container {
             width: 100%;
             max-width: 750px;
@@ -99,7 +98,7 @@
             border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 10px;
             padding: 12px;
-            height: 250px;
+            height: 280px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -117,7 +116,6 @@
         .jarvis { background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.2); align-self: flex-start; color: #e0f2fe; }
         .user { background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); align-self: flex-end; color: #fff; }
 
-        /* Compact Soft Blue Holographic Core with Left Stop Button Layout */
         .interactive-area {
             display: flex;
             align-items: center;
@@ -159,29 +157,4 @@
             animation: spin-reverse 8s linear infinite;
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
-        
-        .core-orb {
-            width: 42px; height: 42px; border-radius: 50%;
-            background: radial-gradient(circle, #38bdf8 0%, #030a17 80%);
-            box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 2; transition: all 0.3s ease;
-        }
-        .listening .core-orb { background: radial-gradient(circle, #0284c7 0%, #030a17 80%); box-shadow: 0 0 25px #0284c7; }
-        .speaking .core-orb { background: radial-gradient(circle, #10b981 0%, #030a17 80%); box-shadow: 0 0 30px #10b981; }
-
-        .status { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; text-align: center; color: #38bdf8; font-weight: bold; margin-top: 6px; }
-
-        /* Universal Popup Modal (For Tasks & History) */
-        .modal {
-            display: none;
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(1, 3, 8, 0.85);
-            justify-content: center; align-items: center; z-index: 1000;
-        }
-        .modal-content {
-            background: #030a17;
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            border-radius: 12px;
-            width: 90%; max-width: 
+        @keyframes spin-reverse { 100% { transform: rotate(-360
