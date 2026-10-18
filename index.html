@@ -1,13 +1,13 @@
-  <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.I. Companion & J.A.R.V.I.S.</title>
+    <title>SHERA BHAI - AI Voice Assistant</title>
     <style>
         body {
-            background: radial-gradient(circle at center, #0a1128 0%, #030712 100%);
-            color: #00f0ff;
+            background: radial-gradient(circle at center, #111827 0%, #030712 100%);
+            color: #38bdf8;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
@@ -25,46 +25,47 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 240, 255, 0.05);
-            padding: 10px 15px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            background: rgba(56, 189, 248, 0.05);
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
         .title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             letter-spacing: 2px;
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #38bdf8;
         }
         .dot {
             width: 10px;
             height: 10px;
-            background-color: #00f0ff;
+            background-color: #38bdf8;
             border-radius: 50%;
-            box-shadow: 0 0 12px #00f0ff;
-            animation: blink 2s infinite;
+            box-shadow: 0 0 12px #38bdf8;
+            animation: pulse-dot 1.5s infinite;
         }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.9); } }
         
         .controls {
             display: flex;
             gap: 8px;
         }
         select, button {
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid #00f0ff;
-            color: #00f0ff;
-            padding: 6px 10px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 6px 12px;
             border-radius: 6px;
             outline: none;
             cursor: pointer;
             font-size: 0.85rem;
         }
         select option {
-            background-color: #050b14;
-            color: #00f0ff;
+            background-color: #030712;
+            color: #38bdf8;
         }
         .api-box {
             width: 100%;
@@ -76,7 +77,7 @@
         input[type="password"] {
             flex: 1;
             background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(0, 240, 255, 0.4);
+            border: 1px solid rgba(56, 189, 248, 0.4);
             color: #fff;
             padding: 10px;
             border-radius: 8px;
@@ -95,19 +96,20 @@
         }
         .msg {
             padding: 12px 16px;
-            border-radius: 10px;
+            border-radius: 12px;
             max-width: 85%;
             line-height: 1.5;
             font-size: 0.95rem;
         }
-        .jarvis {
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid rgba(0, 240, 255, 0.3);
+        .shera {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             align-self: flex-start;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.05);
+            color: #e0f2fe;
         }
         .user {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.1);
             align-self: flex-end;
             color: #fff;
         }
@@ -126,8 +128,8 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 2px dashed rgba(0, 240, 255, 0.4);
-            animation: rotateRing 12s linear infinite;
+            border: 2px dashed rgba(56, 189, 248, 0.4);
+            animation: rotateRing 10s linear infinite;
         }
         @keyframes rotateRing { 100% { transform: rotate(360deg); } }
         
@@ -135,9 +137,9 @@
             width: 75px;
             height: 75px;
             border-radius: 50%;
-            border: 2px solid #00f0ff;
-            background: radial-gradient(circle, rgba(0,240,255,0.6) 0%, rgba(3,7,18,1) 75%);
-            box-shadow: 0 0 25px #00f0ff;
+            border: 2px solid #38bdf8;
+            background: radial-gradient(circle, rgba(56,189,248,0.6) 0%, rgba(3,7,18,1) 75%);
+            box-shadow: 0 0 25px #38bdf8;
             cursor: pointer;
             display: flex;
             justify-content: center;
@@ -147,11 +149,11 @@
         }
         .arc-btn:active { transform: scale(0.95); }
         
-        .listening .core-ring { border-color: #ff0055; animation: rotateRing 4s linear infinite; }
-        .listening .arc-btn { box-shadow: 0 0 30px #ff0055; border-color: #ff0055; }
+        .listening .core-ring { border-color: #f43f5e; animation: rotateRing 3s linear infinite; }
+        .listening .arc-btn { box-shadow: 0 0 30px #f43f5e; border-color: #f43f5e; }
         
         .speaking .arc-btn {
-            box-shadow: 0 0 45px #00f0ff, 0 0 90px rgba(0,240,255,0.6);
+            box-shadow: 0 0 45px #38bdf8, 0 0 90px rgba(56,189,248,0.6);
             transform: scale(1.08);
         }
         
@@ -161,6 +163,7 @@
             opacity: 0.8;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            color: #38bdf8;
         }
         .error-banner {
             color: #ff4a4a;
@@ -179,7 +182,7 @@
 <body>
 
     <div class="header">
-        <div class="title"><div class="dot"></div> A.I. COMPANION</div>
+        <div class="title"><div class="dot"></div> SHERA BHAI</div>
         <div class="controls">
             <select id="langSelect">
                 <option value="en-IN">English</option>
@@ -198,9 +201,9 @@
     </div>
 
     <div class="chat-container" id="chat">
-        <div class="msg jarvis">
-            <strong>Companion</strong><br>
-            Hello! Main aapka smart AI peer hoon. Mic button par tap karke kuch bhi baat kariye.
+        <div class="msg shera">
+            <strong>Shera Bhai</strong><br>
+            Ram Ram bhai! Main tera Shera Bhai hoon. Bol kya madad karu teri? Mic button dabakar baat kar sakte ho.
         </div>
     </div>
 
@@ -208,7 +211,7 @@
         <div class="avatar-core" id="avatarWrapper">
             <div class="core-ring"></div>
             <button class="arc-btn" onclick="startListening()">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
                     <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
                     <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
                     <line x1="12" y1="19" x2="12" y2="23"></line>
@@ -251,18 +254,18 @@
             }
 
             const selectedLang = document.getElementById('langSelect').value;
-            let systemInstruction = "You are a warm, friendly, and smart AI peer. Talk naturally like a supportive human friend, keeping answers concise and crisp.";
+            let systemInstruction = "You are Shera Bhai, a cool, friendly, supportive, and street-smart Indian brotherly figure. Talk naturally like a helpful local buddy, keep responses direct, energetic, and engaging.";
             
             if (selectedLang === 'hi-IN') {
-                systemInstruction += " Reply strictly in natural Hindi (Devanagari script).";
+                systemInstruction += " Reply strictly in natural, friendly Hindi (Devanagari script).";
             } else if (selectedLang === 'hinglish') {
-                systemInstruction += " Reply strictly in casual Indian Hinglish.";
+                systemInstruction += " Reply strictly in casual, friendly Indian Hinglish.";
             } else {
-                systemInstruction += " Reply in clear Indian English.";
+                systemInstruction += " Reply in warm Indian English.";
             }
 
             const fullPrompt = `${systemInstruction}\nUser message: ${promptText}`;
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
             try {
                 const response = await fetch(url, {
@@ -274,12 +277,12 @@
                 const data = await response.json();
                 if (data.error) {
                     showError(data.error.message);
-                    return "Error: " + data.error.message;
+                    return "Bhai error aa gaya: " + data.error.message;
                 }
                 return data.candidates[0].content.parts[0].text;
             } catch (err) {
                 showError("Network connection error.");
-                return "Server connection failed.";
+                return "Net connection check kar le bhai, connect nahi ho pa raha.";
             }
         }
 
@@ -287,7 +290,7 @@
             const chat = document.getElementById('chat');
             const msgDiv = document.createElement('div');
             msgDiv.className = `msg ${sender}`;
-            msgDiv.innerHTML = `<strong>${sender === 'jarvis' ? 'Companion' : 'YOU'}</strong><br>${text}`;
+            msgDiv.innerHTML = `<strong>${sender === 'shera' ? 'Shera Bhai' : 'YOU'}</strong><br>${text}`;
             chat.appendChild(msgDiv);
             chat.scrollTop = chat.scrollHeight;
         }
@@ -298,10 +301,12 @@
             const selectedLang = document.getElementById('langSelect').value;
             
             utterance.lang = selectedLang === 'hi-IN' ? 'hi-IN' : 'en-IN';
+            utterance.pitch = 0.9; // Thodi heavy aur solid aawaz ke liye
+            utterance.rate = 1.0;  // Normal clear speed
             
             utterance.onstart = () => {
                 wrapper.classList.add('speaking');
-                document.getElementById('status').innerText = "Speaking...";
+                document.getElementById('status').innerText = "Shera bol raha hai...";
             };
 
             utterance.onend = () => {
@@ -328,12 +333,12 @@
 
             recognition.onstart = () => {
                 wrapper.classList.add('listening');
-                status.innerText = "Listening...";
+                status.innerText = "Sun raha hu...";
             };
 
             recognition.onspeechend = () => {
                 wrapper.classList.remove('listening');
-                status.innerText = "Thinking...";
+                status.innerText = "Soch raha hu...";
                 recognition.stop();
             };
 
@@ -342,7 +347,7 @@
                 addMessage('user', transcript);
                 
                 const reply = await askGemini(transcript);
-                addMessage('jarvis', reply);
+                addMessage('shera', reply);
                 speak(reply);
             };
 
