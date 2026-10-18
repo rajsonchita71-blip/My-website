@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <style>
         * { box-sizing: border-box; }
         body {
-            background: radial-gradient(circle at center, #0a050f 0%, #020104 100%);
+            background: radial-gradient(circle at center, #030a17 0%, #010308 100%);
             color: #38bdf8;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
@@ -24,141 +24,147 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(225, 29, 72, 0.05);
-            padding: 12px 18px;
+            background: rgba(56, 189, 248, 0.04);
+            padding: 10px 16px;
             border-radius: 12px;
-            border: 1px solid rgba(225, 29, 72, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.2);
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.05);
         }
         .title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: 2px;
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #f43f5e;
+            color: #38bdf8;
         }
         .dot {
-            width: 10px; height: 10px;
-            background-color: #f43f5e;
+            width: 9px; height: 9px;
+            background-color: #38bdf8;
             border-radius: 50%;
-            box-shadow: 0 0 12px #f43f5e;
+            box-shadow: 0 0 10px #38bdf8;
             animation: pulse-dot 1.5s infinite;
         }
         @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         
-        .controls { display: flex; gap: 10px; align-items: center; }
+        .controls { display: flex; gap: 8px; align-items: center; }
         select, button {
             background: rgba(56, 189, 248, 0.1);
-            border: 1px solid #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.4);
             color: #38bdf8;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 6px;
             outline: none;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             transition: all 0.2s;
         }
         select:hover, button:hover { background: rgba(56, 189, 248, 0.2); }
-        select option { background-color: #0a050f; color: #38bdf8; }
-        .smile-btn {
-            background: rgba(225, 29, 72, 0.1);
-            border: 1px solid #f43f5e;
-            font-size: 1.2rem;
-            padding: 4px 8px;
+        select option { background-color: #030a17; color: #38bdf8; }
+        
+        .menu-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            font-size: 1.1rem;
+            padding: 4px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
         }
 
         .api-box {
             width: 100%;
             max-width: 850px;
-            margin: 10px 0;
+            margin: 8px 0;
             display: flex;
             gap: 8px;
         }
         input[type="password"] {
             flex: 1;
             background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(56, 189, 248, 0.4);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             color: #fff;
-            padding: 10px;
+            padding: 8px 12px;
             border-radius: 6px;
             outline: none;
+            font-size: 0.85rem;
         }
 
         .main-layout {
             display: flex;
             width: 100%;
             max-width: 850px;
-            gap: 15px;
+            gap: 12px;
             flex: 1;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         @media (max-width: 700px) {
             .main-layout { flex-direction: column; }
         }
 
-        /* Professional Red-Blue Task Panel */
+        /* Compact Soft Blue Task Panel */
         .task-panel {
-            flex: 1;
-            background: rgba(10, 5, 15, 0.6);
-            border: 1px solid rgba(225, 29, 72, 0.3);
+            flex: 0.8;
+            background: rgba(3, 10, 23, 0.6);
+            border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 10px;
-            padding: 12px;
-            max-height: 360px;
+            padding: 10px;
+            max-height: 280px;
             overflow-y: auto;
-            box-shadow: inset 0 0 15px rgba(225, 29, 72, 0.05);
+            box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.03);
         }
         .task-panel h3 {
-            margin: 0 0 10px 0;
-            font-size: 0.95rem;
-            color: #f43f5e;
-            border-bottom: 1px solid rgba(225, 29, 72, 0.3);
-            padding-bottom: 6px;
+            margin: 0 0 8px 0;
+            font-size: 0.9rem;
+            color: #38bdf8;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            padding-bottom: 4px;
         }
         .task-item {
-            font-size: 0.8rem;
-            padding: 8px;
-            margin-bottom: 6px;
-            background: rgba(56, 189, 248, 0.05);
-            border-left: 3px solid #38bdf8;
+            font-size: 0.78rem;
+            padding: 6px 8px;
+            margin-bottom: 5px;
+            background: rgba(56, 189, 248, 0.04);
+            border-left: 2px solid #38bdf8;
             border-radius: 4px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .task-item.completed { text-decoration: line-through; opacity: 0.4; border-left-color: #f43f5e; }
+        .task-item.completed { text-decoration: line-through; opacity: 0.4; border-left-color: rgba(56, 189, 248, 0.3); }
 
         /* Chat Container */
         .chat-container {
             flex: 2;
-            background: rgba(5, 2, 8, 0.7);
+            background: rgba(2, 6, 15, 0.7);
             border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 10px;
-            padding: 12px;
-            max-height: 360px;
+            padding: 10px;
+            max-height: 280px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            box-shadow: inset 0 0 20px rgba(56, 189, 248, 0.03);
+            gap: 10px;
+            box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.03);
         }
         .msg {
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-radius: 8px;
             max-width: 88%;
-            font-size: 0.88rem;
-            line-height: 1.5;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
-        .jarvis { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); align-self: flex-start; color: #e0f2fe; }
-        .user { background: rgba(225, 29, 72, 0.15); border: 1px solid rgba(225, 29, 72, 0.4); align-self: flex-end; color: #fff; }
+        .jarvis { background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.2); align-self: flex-start; color: #e0f2fe; }
+        .user { background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); align-self: flex-end; color: #fff; }
 
-        /* Holographic Red-Blue Core */
+        /* Soft Blue Holographic Core */
         .avatar-container {
             position: relative;
-            width: 120px;
-            height: 120px;
-            margin: 12px auto;
+            width: 110px;
+            height: 110px;
+            margin: 10px auto;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -166,49 +172,49 @@
         }
         .ring-outer {
             position: absolute; width: 100%; height: 100%;
-            border-radius: 50%; border: 2px dashed rgba(56, 189, 248, 0.5);
+            border-radius: 50%; border: 2px dashed rgba(56, 189, 248, 0.4);
             animation: spin 10s linear infinite;
         }
         .ring-inner {
             position: absolute; width: 80%; height: 80%;
-            border-radius: 50%; border: 2px solid rgba(225, 29, 72, 0.4);
+            border-radius: 50%; border: 2px solid rgba(56, 189, 248, 0.25);
             animation: spin-reverse 8s linear infinite;
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
         
         .core-orb {
-            width: 55px; height: 55px; border-radius: 50%;
-            background: radial-gradient(circle, #38bdf8 0%, #f43f5e 60%, #0a050f 90%);
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 10px #f43f5e;
+            width: 50px; height: 50px; border-radius: 50%;
+            background: radial-gradient(circle, #38bdf8 0%, #030a17 80%);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
             display: flex; justify-content: center; align-items: center;
             z-index: 2; transition: all 0.3s ease;
         }
-        .listening .core-orb { background: radial-gradient(circle, #f43f5e 0%, #0a050f 80%); box-shadow: 0 0 35px #f43f5e; }
-        .speaking .core-orb { background: radial-gradient(circle, #10b981 0%, #0a050f 80%); box-shadow: 0 0 40px #10b981; }
+        .listening .core-orb { background: radial-gradient(circle, #0284c7 0%, #030a17 80%); box-shadow: 0 0 30px #0284c7; }
+        .speaking .core-orb { background: radial-gradient(circle, #10b981 0%, #030a17 80%); box-shadow: 0 0 35px #10b981; }
 
-        .status { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #f43f5e; font-weight: bold; }
+        .status { font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; text-align: center; color: #38bdf8; font-weight: bold; }
 
         /* Modal for History */
         .modal {
             display: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(1, 3, 8, 0.85);
             justify-content: center; align-items: center; z-index: 1000;
         }
         .modal-content {
-            background: #0a050f;
-            border: 1px solid #f43f5e;
+            background: #030a17;
+            border: 1px solid rgba(56, 189, 248, 0.4);
             border-radius: 12px;
-            width: 90%; max-width: 550px;
-            max-height: 80vh;
+            width: 90%; max-width: 500px;
+            max-height: 75vh;
             padding: 15px;
             display: flex; flex-direction: column;
-            box-shadow: 0 0 35px rgba(225, 29, 72, 0.3);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
         }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(225, 29, 72, 0.3); padding-bottom: 8px; color: #f43f5e; }
-        .modal-body { flex: 1; overflow-y: auto; margin-top: 10px; font-size: 0.85rem; }
-        .history-item { margin-bottom: 12px; padding: 8px; background: rgba(56, 189, 248, 0.03); border-left: 2px solid #38bdf8; border-radius: 4px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 6px; color: #38bdf8; }
+        .modal-body { flex: 1; overflow-y: auto; margin-top: 10px; font-size: 0.82rem; }
+        .history-item { margin-bottom: 10px; padding: 6px; background: rgba(56, 189, 248, 0.03); border-left: 2px solid #38bdf8; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -221,7 +227,7 @@
                 <option value="en-IN">English (Pro)</option>
                 <option value="hinglish">Hinglish</option>
             </select>
-            <button class="smile-btn" onclick="openHistoryModal()" title="Daily Chat Logs">😊</button>
+            <button class="menu-btn" onclick="openHistoryModal()" title="Menu Logs">☰</button>
             <button onclick="toggleKeyBox()">⚙ Key</button>
         </div>
     </div>
@@ -232,9 +238,9 @@
     </div>
 
     <div class="main-layout">
-        <!-- Tasks & Reminders Panel -->
+        <!-- Compact Tasks Panel -->
         <div class="task-panel">
-            <h3>📋 Tasks & Reminders</h3>
+            <h3>📋 Tasks</h3>
             <div id="taskList"></div>
         </div>
 
@@ -242,17 +248,17 @@
         <div class="chat-container" id="chat">
             <div class="msg jarvis">
                 <strong>JARVIS</strong><br>
-                नमस्ते सर! जार्विस सिस्टम ऑनलाइन है। आप किसी भी सेक्टर से जुड़ा कोई भी कठिन से कठिन सवाल पूछ सकते हैं या रिमाइंडर सेट करवा सकते हैं।
+                नमस्ते सर! जार्विस सिस्टम ऑनलाइन है। आप कोई भी प्रश्न पूछ सकते हैं या रिमाइंडर सेट करवा सकते हैं।
             </div>
         </div>
     </div>
 
-    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 10px;">
+    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 8px;">
         <div class="avatar-container" id="avatarWrapper" onclick="startListening()">
             <div class="ring-outer"></div>
             <div class="ring-inner"></div>
             <div class="core-orb">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
                     <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
                     <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
                     <line x1="12" y1="19" x2="12" y2="22"></line>
@@ -262,11 +268,11 @@
         <div class="status" id="status">System Standby</div>
     </div>
 
-    <!-- Smile Pop Modal for History -->
+    <!-- Menu Modal for History -->
     <div class="modal" id="historyModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 style="margin:0;">😊 Daily Conversation History</h3>
+                <h3 style="margin:0;">☰ Conversation Logs</h3>
                 <button onclick="closeHistoryModal()">✖</button>
             </div>
             <div class="modal-body" id="historyLog"></div>
@@ -277,8 +283,8 @@
         let apiKey = localStorage.getItem('gemini_api_key') || '';
         if(apiKey) { document.getElementById('apiBox').style.display = 'none'; }
 
-        let tasks = JSON.parse(localStorage.getItem('jarvis_tasks_v2')) || [];
-        let chatLogs = JSON.parse(localStorage.getItem('jarvis_logs_v2')) || [];
+        let tasks = JSON.parse(localStorage.getItem('jarvis_tasks_v3')) || [];
+        let chatLogs = JSON.parse(localStorage.getItem('jarvis_logs_v3')) || [];
 
         function saveKey() {
             const key = document.getElementById('apiKeyInput').value.trim();
@@ -296,7 +302,7 @@
 
         function renderTasks() {
             const list = document.getElementById('taskList');
-            list.innerHTML = tasks.length === 0 ? '<div style="font-size:0.75rem; opacity:0.5;">No active tasks.</div>' : '';
+            list.innerHTML = tasks.length === 0 ? '<div style="font-size:0.75rem; opacity:0.4;">No tasks.</div>' : '';
             tasks.forEach((t, i) => {
                 const item = document.createElement('div');
                 item.className = `task-item ${t.completed ? 'completed' : ''}`;
@@ -310,21 +316,21 @@
 
         function toggleTask(i) {
             tasks[i].completed = !tasks[i].completed;
-            localStorage.setItem('jarvis_tasks_v2', JSON.stringify(tasks));
+            localStorage.setItem('jarvis_tasks_v3', JSON.stringify(tasks));
             renderTasks();
         }
 
         function addReminder(text, delayMinutes) {
             const timeStr = new Date(Date.now() + delayMinutes * 60000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
             tasks.push({ text, time: timeStr, completed: false });
-            localStorage.setItem('jarvis_tasks_v2', JSON.stringify(tasks));
+            localStorage.setItem('jarvis_tasks_v3', JSON.stringify(tasks));
             renderTasks();
 
             setTimeout(() => {
                 speak(`सर, आपके रिमाइंडर का समय हो गया है: ${text}`);
                 const taskObj = tasks.find(t => t.text === text);
                 if(taskObj) taskObj.completed = true;
-                localStorage.setItem('jarvis_tasks_v2', JSON.stringify(tasks));
+                localStorage.setItem('jarvis_tasks_v3', JSON.stringify(tasks));
                 renderTasks();
             }, delayMinutes * 60000);
         }
@@ -332,12 +338,12 @@
         function logConversation(userText, jarvisReply) {
             const dateStr = new Date().toLocaleString();
             chatLogs.push({ date: dateStr, user: userText, jarvis: jarvisReply });
-            localStorage.setItem('jarvis_logs_v2', JSON.stringify(chatLogs));
+            localStorage.setItem('jarvis_logs_v3', JSON.stringify(chatLogs));
         }
 
         function openHistoryModal() {
             const logDiv = document.getElementById('historyLog');
-            logDiv.innerHTML = chatLogs.length === 0 ? 'No chat history available.' : '';
+            logDiv.innerHTML = chatLogs.length === 0 ? 'No logs available.' : '';
             chatLogs.slice().reverse().forEach(log => {
                 logDiv.innerHTML += `
                     <div class="history-item">
@@ -366,10 +372,9 @@
             }
 
             const selectedLang = document.getElementById('langSelect').value;
-            // High intelligence core instructions across multi-sectors
-            let systemInstruction = "You are JARVIS, an elite, highly intelligent, ultra-fast multi-sector AI assistant (comparable to ChatGPT Pro). Provide expert, precise, crisp, and deep answers across science, coding, tech, finance, history, and general queries.";
+            let systemInstruction = "You are JARVIS, an elite multi-sector AI assistant. Provide expert, precise, crisp answers across all subjects.";
             
-            if (selectedLang === 'hi-IN') systemInstruction += " Reply strictly in fluent, formal and professional Hindi.";
+            if (selectedLang === 'hi-IN') systemInstruction += " Reply strictly in fluent, formal Hindi.";
             else if (selectedLang === 'hinglish') systemInstruction += " Reply in crisp professional Hinglish.";
             else systemInstruction += " Reply in elite professional English.";
 
@@ -405,7 +410,7 @@
             const selectedLang = document.getElementById('langSelect').value;
             
             utterance.lang = selectedLang === 'hi-IN' ? 'hi-IN' : 'en-IN';
-            utterance.pitch = 0.85; // Deep professional tone
+            utterance.pitch = 0.85;
             
             utterance.onstart = () => {
                 wrapper.classList.remove('listening');
